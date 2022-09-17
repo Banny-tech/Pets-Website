@@ -1,0 +1,266 @@
+{% extends 'shop/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="all-contents">
+  <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true, "imagesLoaded":true }'>
+    <div class="carousel-cell">
+      <img class="w3-image" src="{% static 'images/Pet banner 3.png' %}">
+    </div>
+    <div class="carousel-cell">
+      <img class="w3-image" src="{% static 'images/Pet banner 1.png' %}">
+    </div>
+    <div class="carousel-cell">
+      <img class="w3-image" src="{% static 'images/Pet banner 2.png' %}">
+    </div>
+  </div>
+
+  <img src="{% static 'images/Selling_Banners.png' %}" style="align-items: center; justify-content: center;">
+
+  <!--TOP PRODUCTS -->
+
+  <div class="grid-top-products">
+
+    {% for i in product %}
+    <div class="top-products">
+      <div class="column">
+        <figure data-product={{ i.id }} data-action="add" class="snip1418 hover update-cart">
+
+          <img src="/media/{{i.images}}" alt="sample96" />
+
+          {% if request.user.is_authenticated %}
+          <div class="add-to-cart"> <i class="ion-android-add"></i>
+            <span>Add to Cart</span>
+            <a href=""></a>
+          </div>
+          {% endif %}
+
+          <figcaption>
+            <h4><b>{{ i.product_name }}</b></h4>
+            <p>{{ i.desc }}.</p>
+            <div class="price">
+              <s>Rs.{{i.price}}</s> Rs.{{i.our_price}}
+            </div>
+          </figcaption>
+
+        </figure>
+      </div>
+    </div>
+    {% endfor %}
+
+
+    <img class="new-arrivals-img" src="{% static 'images/New_Arrivals.png' %}">
+    <div class="new-arrivals">
+
+      {% for prod in new_arrivals %}
+      {% for i in prod %}
+      <div class="column">
+        <figure data-product={{ i.id }} data-action="add" class="snip1418 hover update-cart">
+
+          <img src="/media/{{i.images}}" alt="sample96" />
+
+          {% if request.user.is_authenticated %}
+          <div class="add-to-cart"> <i class="ion-android-add"></i>
+            <span>Add to Cart</span>
+            <a href=""></a>
+          </div>
+          {% endif %}
+
+          <figcaption>
+            <h4><b>{{ i.product_name }}</b></h4>
+            <p>{{ i.desc }}.</p>
+            <div class="price">
+              <s>Rs.{{i.price}}</s> Rs.{{i.our_price}}
+            </div>
+          </figcaption>
+
+        </figure>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+  <div>
+    <img class="aboutus-img" src="{% static 'images/About Us Banner.png' %}">
+  </div>
+  <div class="footer">
+    <div class="contain">
+      <div class="col">
+        <h1>Contact us</h1>
+        <ul>
+          <li><i class="fas fa-phone"></i>223-5739453483</li>
+          <li><i class="fas fa-envelope"></i>info.pethelp@gmail.com</li>
+          <li><i class="fas fa-map-marked-alt"></i>Address
+            <p class="cool-address">
+              <span>Palo Alto, CA 94302,</span>
+              <span>California, United States</span>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h1>Help us save man's best friends</h1>
+        <ul>
+          <li class="special-footer">Find Animal shelter here: </li>
+          <li><a class="footer-link" href="https://theshelterpetproject.org/"
+              style="text-decoration: none;">https://theshelterpetproject.org/</a></li>
+        </ul>
+      </div>
+      <div class="col social">
+        <h1>Social</h1>
+        <ul>
+          <li><img src="https://svgshare.com/i/XF_.svg" width="32" style="width: 32px;"></li>
+          <li><img src="https://svgshare.com/i/XFB.svg" width="32" style="width: 32px;"></li>
+          <li><img src="https://svgshare.com/i/XEV.svg" width="32" style="width: 32px;"></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-------------------DOG SUBPAGE NAVBAR------------------->
+<div class="dog-subpage">
+  <div class="grid-products">
+
+    {% for prod in dog_products %}
+    <div class="column">
+      <figure data-product={{ prod.id }} data-action="add" class="snip1418 hover update-cart">
+
+        <img src="/media/{{prod.images}}" alt="sample85" />
+
+        {% if request.user.is_authenticated %}
+        <div class="add-to-cart"> <i class="ion-android-add"></i>
+          <span>Add to Cart</span>
+          <a href=""></a>
+        </div>
+        {% endif %}
+
+        <figcaption>
+          <h4><b>{{ prod.product_name }}</b></h4>
+          <p>{{ prod.desc }}.</p>
+          <div class="price">
+            <s>Rs.{{prod.price}}</s> Rs.{{prod.our_price}}
+          </div>
+        </figcaption>
+
+      </figure>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
+<!--CAT SUBPAGE NAV-->
+<div class="cat-subpage">
+  <div class="grid-products">
+
+    {% for prod in cat_products %}
+    <div class="column">
+      <figure data-product={{ prod.id }} data-action="add" class="snip1418 hover update-cart">
+
+        <img src="/media/{{prod.images}}" alt="sample85" />
+
+        {% if request.user.is_authenticated %}
+        <div class="add-to-cart"> <i class="ion-android-add"></i>
+          <span>Add to Cart</span>
+          <a href=""></a>
+        </div>
+        {% endif %}
+
+        <figcaption>
+          <h4><b>{{ prod.product_name }}</b></h4>
+          <p>{{ prod.desc }}.</p>
+          <div class="price">
+            <s>Rs.{{prod.price}}</s> Rs.{{prod.our_price}}
+          </div>
+        </figcaption>
+
+      </figure>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
+<!--FISH SUBPAGE NAV-->
+<div class="fish-subpage">
+  <div class="grid-products">
+    {% for prod in fish_products %}
+    <div class="column">
+      <figure data-product={{ prod.id }} data-action="add" class="snip1418 hover update-cart">
+
+        <img src="/media/{{prod.images}}" alt="sample85" />
+
+        {% if request.user.is_authenticated %}
+        <div class="add-to-cart"> <i class="ion-android-add"></i>
+          <span>Add to Cart</span>
+          <a href=""></a>
+        </div>
+        {% endif %}
+
+        <figcaption>
+          <h4><b>{{ prod.product_name }}</b></h4>
+          <p>{{ prod.desc }}.</p>
+          <div class="price">
+            <s>Rs.{{prod.price}}</s> Rs.{{prod.our_price}}
+          </div>
+        </figcaption>
+
+      </figure>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+</div>
+
+
+<!--Bird Subpage nav-->
+<div class="bird-subpage">
+  <div class="grid-products">
+
+    {% for prod in bird_products %}
+    <div class="column">
+      <figure data-product={{ prod.id }} data-action="add" class="snip1418 hover update-cart">
+
+        <img src="/media/{{prod.images}}" alt="sample85" />
+
+        {% if request.user.is_authenticated %}
+        <div class="add-to-cart"> <i class="ion-android-add"></i>
+          <span>Add to Cart</span>
+          <a href=""></a>
+        </div>
+        {% endif %}
+
+        <figcaption>
+          <h4><b>{{ prod.product_name }}</b></h4>
+          <p>{{ prod.desc }}.</p>
+          <div class="price">
+            <s>Rs.{{prod.price}}</s> Rs.{{prod.our_price}}
+          </div>
+        </figcaption>
+
+      </figure>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock content %}
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="{% static 'home.js' %}"></script>
+
+</body>
+
+</html>

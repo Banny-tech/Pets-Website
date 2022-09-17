@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'signup.css' %}">
+  <title>Signup</title>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2 style="font-size: 40px;">SIGNUP</h2>
+    <form method="post" id="form_submit">
+      {% csrf_token %}
+      {{registration_form.non_field_errors}}
+      <div class="user-box">
+        <input type="text" name="first_name" required="">
+        <label>First Name</label>
+        {% for err in registration_form.first_name.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="text" name="last_name" required="">
+        <label>Last Name</label>
+        {% for err in registration_form.last_name.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="text" name="email" required="">
+        <label>Email</label>
+        {% for err in registration_form.email.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="tel" name="phone_no" required="">
+        <label>Phone no</label>
+        {% for err in registration_form.phone_no.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="text" name="username" required="">
+        <label>Username</label>
+        {% for err in registration_form.username.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password1" required="">
+        <label>Password</label>
+        {% for err in registration_form.password1.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password2" required="">
+        <label>Confirm Password</label>
+        {% for err in registration_form.password2.errors %}
+        <p><small class="text-danger" style="font-size: 11px;">{{ err }}</small></p>
+        {% endfor %}
+      </div>
+      {{ customer_form }}
+      <a onclick="myFunction()" href="#" class="submit-button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+
+    <a class="signup-text" href="{% url 'login' %}" style="text-decoration: none;">
+      <p class="inside-p-tag">Already have an account? Login!</p>
+    </a>
+  </div>
+
+  <script>
+    function myFunction() {
+      document.getElementById("form_submit").submit();
+    }
+  </script>
+</body>
+</html>

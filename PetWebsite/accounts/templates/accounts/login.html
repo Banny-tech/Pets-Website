@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form method="post" id="form_submit">
+
+      {% csrf_token %}
+      {{login_form.non_field_errors}}
+      <div class="user-box">
+        <input type="text" name="username" required="">
+        <label>Username</label>
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password" required="">
+        <label>Password</label>
+      </div>
+
+      {% if login_form %}
+      <p><small class="text-danger" style="font-size: 11px;">{{ login_form }}</small></p>
+      {% endif %}
+      <a onclick="myFunction()" class="submit-button" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+
+    <a class="forgot-password" href="#">
+      <p>Forgot password?</p>
+    </a>
+
+    <a class="signup-text" href="{% url 'signup' %}">
+      <p>Don't have an account? Sign Up!</p>
+    </a>
+  </div>
+  <script>
+    function myFunction() {
+      document.getElementById("form_submit").submit();
+    }
+  </script>
+</body>
+</html>
